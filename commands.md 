@@ -7,4 +7,9 @@ semgrep scan --config ./rules/CVE-2017-1000430.yml
 docker run -it --rm -v .:/workspace drowned/rudra:latest
 docker run -it --rm -v .:/workspace drowned/safedrop:latest
 ```
+## Create a new branch based on the current branch
 
+```bash
+git checkout -b feature-x origin/feature-x
+git push -u origin feature-x
+```
