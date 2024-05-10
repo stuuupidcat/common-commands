@@ -13,3 +13,54 @@ docker run -it --rm -v .:/workspace drowned/safedrop:latest
 git checkout -b feature-x origin/feature-x
 git push -u origin feature-x
 ```
+
+## Submodule
+
+Git 子模块（submodule）是一个非常有用的功能，允许你将一个 Git 仓库作为另一个 Git 仓库的子目录。这样可以方便地管理项目中的依赖库或其他项目。这里有一些常用的 Git 子模块命令：
+
+1. **添加子模块**：
+   ```bash
+   git submodule add <仓库地址> [路径]
+   ```
+
+2. **初始化子模块**：
+   ```bash
+   git submodule init
+   ```
+
+3. **更新子模块**：
+   ```bash
+   git submodule update
+   ```
+
+4. **克隆一个包含子模块的项目**：
+   ```bash
+   git clone --recurse-submodules <仓库地址>
+   ```
+
+5. **检查子模块状态**：
+   ```bash
+   git submodule status
+   ```
+
+6. **删除子模块**：
+   删除子模块比较复杂，需要几个步骤：
+   - 在 `.gitmodules` 文件中删除相应的子模块条目。
+   - 在 `.git/config` 文件中删除相应的子模块条目。
+   - 运行 `git rm --cached [路径]` 来从仓库中删除子模块的数据。
+   - 手动删除子模块存储的目录和 `.git/modules` 下的相关目录。
+
+## DOML-related
+
+```bash
+cargo run -p interface check ./doml-example/sirui/doml_practice_240307/Base/ContinuousDataModel/model.dom
+cargo run -p parser --example syntax-tree-viewer
+cargo run -p interface -- -d doml-example/documents/理论文档/初等模型模版_modified.md ./doml-example/documents/dom/Maxwell/ElementaryModels/DrudeModel.dom
+cargo run -p interface mdtest ./doml-example/documents/dom/Maxwell/ElementaryModels/DrudeModel.dom
+```
+
+## Souffle
+
+```bash
+souffle -F ./Rust/CVE-2020-35906/facts -D ./Rust/CVE-2020-35906/output ./Rust/CVE-2020-35906/CVE-2020-35906.dl 
+```
