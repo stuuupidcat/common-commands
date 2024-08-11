@@ -64,3 +64,9 @@ cargo run -p interface mdtest ./doml-example/documents/dom/Maxwell/ElementaryMod
 ```bash
 souffle -F ./Rust/CVE-2020-35906/facts -D ./Rust/CVE-2020-35906/output ./Rust/CVE-2020-35906/CVE-2020-35906.dl 
 ```
+
+## RPL
+
+cargo run --bin rpl-driver -- tests/ui/cve_2020_25016/cve_2020_25016.rs --crate-type=lib
+cargo install --path .   
+cargo +nightly-2024-08-07 rpl
