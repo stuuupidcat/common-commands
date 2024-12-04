@@ -7,6 +7,7 @@ semgrep scan --config ./rules/CVE-2017-1000430.yml
 docker run -it --rm -v .:/workspace drowned/rudra:latest
 docker run -it --rm -v .:/workspace drowned/safedrop:latest
 ```
+
 ## Create a new branch based on the current branch
 
 ```bash
@@ -26,12 +27,28 @@ cargo run -p interface mdtest ./doml-example/documents/dom/Maxwell/ElementaryMod
 ## Souffle
 
 ```bash
-souffle -F ./Rust/CVE-2020-35906/facts -D ./Rust/CVE-2020-35906/output ./Rust/CVE-2020-35906/CVE-2020-35906.dl 
+souffle -F ./Rust/CVE-2020-35906/facts -D ./Rust/CVE-2020-35906/output ./Rust/CVE-2020-35906/CVE-2020-35906.dl
 ```
 
 ## RPL
 
+```bash
 cargo uibless
-RPL_LOG=info cargo +nightly-2024-10-23 run --bin rpl-driver -- --edition=2021 --crate-type=lib tests/ui/cve_2020_25016/cve_2020_25016.rs 
+RPL_LOG=info cargo +nightly-2024-10-23 run --bin rpl-driver -- --edition=2021 --crate-type=lib tests/ui/cve_2020_25016/cve_2020_25016.rs
+RPL_LOG=debug cargo +nightly-stage1 run --bin rpl-driver -- --edition=2021 --crate-type=lib tests/ui/cve_2020_25016/cve_2020_25016.rs
+```
+
+other options:
+
+```bash
+RPL_LOG=debug
+RPL_LOG=rpl_mir::matches=debug
+RPL_LOG=rpl_mir[build_candidates]=debug
+```
+
+```
 rustc +nightly-2024-10-23 --edition 2021 -Zdump-mir=optimized -Zdump-mir-graphviz tests/ui/cve_2018_21000/cve_2018_21000.rs
 cargo test --package rpl_mir
+git rebase -i master
+git push --force origin feature-x
+```
