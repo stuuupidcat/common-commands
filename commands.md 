@@ -35,7 +35,7 @@ souffle -F ./Rust/CVE-2020-35906/facts -D ./Rust/CVE-2020-35906/output ./Rust/CV
 ```bash
 cargo uibless
 RPL_LOG=info cargo +nightly-2024-10-23 run --bin rpl-driver -- --edition=2021 --crate-type=lib tests/ui/cve_2020_25016/cve_2020_25016.rs
-RPL_LOG=debug cargo +nightly-stage1 run --bin rpl-driver -- --edition=2021 --crate-type=lib tests/ui/cve_2020_25016/cve_2020_25016.rs
+RPL_LOG=debug cargo +nightly-2025-02-13-stage1 run --bin rpl-driver -- --edition=2021 --crate-type=lib tests/ui/cve_2020_25016/cve_2020_25016.rs
 ```
 
 other options:
@@ -51,4 +51,28 @@ rustc +nightly-2024-10-23 --edition 2021 -Zdump-mir=optimized -Zdump-mir-graphvi
 cargo test --package rpl_mir
 git rebase -i master
 git push --force origin feature-x
+```
+
+use `cargo rpl` to dump mir of a function in a crate.
+
+After rebase and merge:
+- git switch master
+- git pull
+- git switch dev 
+- git rebase master
+- git push -f 
+
+
+shift + up/down/left/right to move the cursor in the terminal.
+command + option to switch files.
+command + option + shift + up/down to copy cursors.
+
+## rustc_dev
+
+```
+./x setup
+./x build
+./x test tidy
+./x test --bless --only-modified tests/ui
+./x test src/tools/rustfmt
 ```
